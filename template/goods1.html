@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$arr.g_name}</title>
+</head>
+
+<body>
+{$arr.g_name}
+{$arr.g_price}
+{$arr.g_last}
+{$arr.g_weight}
+<img src="{$root}{$arr.g_pic}" />
+<a href="order.php?do=buy&g_id={$arr.g_id}">购买</a>
+<a href="ajax.php?do=co&g_id={$arr.g_id}">加入收藏</a>   <a href="ajax.php?do=bus&g_id={$arr.g_id}">加入购物车</a>
+{$arr.g_bakd}
+{$arr.g_info}
+</body>
+</html>

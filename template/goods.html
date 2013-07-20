@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网上超市-电子商务</title>
+<meta name="keywords" content="web store, free templates, website templates, CSS, HTML" />
+<meta name="description" content="Web Store Theme is a free CSS template provided by templatemo.com." />
+<link href="{$temroot}css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="{$temroot}css/ddsmoothmenu.css" />
+
+<script type="text/javascript" src="{$temroot}js/jquery.min.js"></script>
+<script type="text/javascript" src="{$temroot}js/ddsmoothmenu.js">
+</script>
+
+<script type="text/javascript">
+
+ddsmoothmenu.init({
+	mainmenuid: "templatemo_menu", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+
+<link rel="stylesheet" href="{$temroot}css/lightbox.css" type="text/css" media="screen" />
+	
+<script src="{$temroot}js/prototype.js" type="text/javascript"></script>
+<script src="{$temroot}js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
+<script src="{$temroot}js/lightbox.js" type="text/javascript"></script>
+
+</head>
+
+<body id="subpage">
+
+<div id="templatemo_wrapper">
+	{include file='top.html'}
+    
+    <div class="cleaner h20"></div>
+    <div id="templatemo_main_top"></div>
+    <div id="templatemo_main">
+    	
+        {include file='left.html'} <!-- END of sidebar -->
+        
+        <div id="content">
+        	<h2>产品详情</h2>
+            <div class="col col_13">
+        	<img src="{$root}{$arr.g_pic}" alt="{$arr.g_name}" width="300px" height="200px" />
+            </div>
+            <div class="col col_13 no_margin_right">
+                <table>
+                    <tr>
+                        <td height="30" width="160">商品名:</td>
+                        <td>{$arr.g_name}</td>
+                    </tr>
+                    <tr>
+                        <td height="30">价格:</td>
+                        <td>￥{$arr.g_price}.00</td>
+                    </tr>
+                    <tr>
+                        <td height="30">剩余:</td>
+                        <td>{$arr.g_last}</td>
+                    </tr>
+                    <tr>
+                        <td height="30">品牌:</td>
+                        <td>{$arr.g_bakd}</td>
+                    </tr>
+                    <tr><td height="30">数量:</td><td><input type="text" value="1" style="width: 20px; text-align: right" /></td></tr>
+                </table>
+                <div class="cleaner h20"></div>
+                <a href="order.php?do=buy&g_id={$arr.g_id}" class="add_to_cart">购买</a>
+                <a href="ajax.php?do=co&g_id={$arr.g_id}" class="add_to_cart">加入收藏</a>
+                <a href="ajax.php?do=bus&g_id={$arr.g_id}" class="add_to_cart">加入购物车</a>
+			</div>
+            <div class="cleaner h30"></div>
+            
+            <h5><strong>商品详情</strong></h5>
+            <div class="info_all" style="margin: 0 0 10px 0;padding: 0;width:700px;overflow:hidden;">
+            {$arr.g_info}
+            </div>	
+            
+            <div class="cleaner h50"></div>
+            
+            <h4>推荐产品</h4>
+            {section loop=$tui_arr name=tui}
+        	<div class="col col_14 product_gallery {if $smarty.section.tui.last}no_margin_right{/if} ">
+            	<a href="index_do.php?g_id={$tui_arr[tui].g_id}"><img src="{$root}{$tui_arr[tui].g_pic}" width="200px" height="150px"/></a>
+                <h3>Ut eu feugiat</h3>
+                <p class="product_price">￥{$tui_arr[tui].g_price}</p>
+                <a href="ajax.php?do=bus&g_id={$tui_arr[tui].g_id}" class="add_to_cart">加入购物车</a>
+            </div> 
+            {/section}       	
+            
+           
+            <div class="cleaner"></div>
+        </div> <!-- END of content -->
+        <div class="cleaner"></div>
+    </div> <!-- END of main -->
+     {include file='foot.html'}
+     <!-- END of footer -->   
+   
+</div>
+
+</body>
+</html>

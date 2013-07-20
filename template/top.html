@@ -1,0 +1,62 @@
+<div id="templatemo_wrapper">
+	<div id="templatemo_header">
+    	<div id="site_title"><h1><a href="#">网上超市</a></h1></div>
+        
+        <div id="header_right">
+            <ul id="language">
+            {if $title_user eq 'login'}
+            	<li><a href="register.php">注册</a></li>
+                <li><a href="login.php">登陆</a></li>
+                
+                {else}
+                <li><a href="member.php">个人主页</a></li>
+                <li><a href="index.php?out=out" id="out" onclick="return confirm('你确定要退出吗?');">退出</a></li>
+                <li>{$title_user} 欢迎你！</li>
+                
+                
+                {/if}
+            </ul>
+            <div class="cleaner"></div>
+            <div id="templatemo_search">
+                <form action="search.php" method="get">
+                  <input type="text" value="搜索商品" name="key" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                  <input type="submit" name="s_sub" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
+                </form>
+            </div>
+         </div> <!-- END -->
+    </div> <!-- END of header -->
+    
+    <div id="templatemo_menu" class="ddsmoothmenu">
+        <ul>
+            <li><a href="../" class="selected">首页</a></li>
+            {section loop=$goodscat name=dao}
+			{if $goodscat[dao].up_id eq 0 and $goodscat[dao].is_dao eq 1}
+            <li><a href="index_do.php?cat_id={$goodscat[dao].cat_id}">{$goodscat[dao].cat_name}</a>
+            
+                <ul>
+                {section loop=$goodscat name=erdao}
+				{if $goodscat[erdao].up_id eq $goodscat[dao].cat_id }
+                    <li><a href="index_do.php?cat_d_id={$goodscat[erdao].cat_id}">{$goodscat[erdao].cat_name}</a></li>
+                 {/if}
+				{/section}  
+              </ul>
+            </li>
+            {/if}
+			{/section}
+            {section loop=$wencat name=dao}
+			{if $wencat[dao].fid eq 0 and $wencat[dao].isshow eq 1}
+            <li><a href="index_do.php?wen_id={$wencat[dao].wen_id}">{$wencat[dao].name}</a>
+                <ul>
+                {section loop=$wencat name=erdao}
+				{if $wencat[erdao].fid eq $wencat[dao].wen_id }
+                    <li><a href="index_do.php?wen_d_id={$wencat[erdao].wen_id}">{$wencat[erdao].name}</a></li>
+                    {/if}
+					{/section}
+                    
+              </ul>
+            </li>
+            {/if}
+			{/section}
+        </ul>
+        <br style="clear: left" />
+    </div> <!-- end of templatemo_menu -->

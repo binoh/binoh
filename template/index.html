@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网上超市-电子商务</title>
+<link href="{$temroot}css/templatemo_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{$temroot}css/ddsmoothmenu.css" />
+<script type="text/javascript" src="{$temroot}js/jquery.min.js"></script>
+<script type="text/javascript" src="{$temroot}js/ddsmoothmenu.js">
+</script>
+
+<script type="text/javascript">
+
+ddsmoothmenu.init({
+	mainmenuid: "templatemo_menu", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="{$temroot}css/styles.css" />
+<script language="javascript" type="text/javascript" src="{$temroot}scripts/mootools-1.2.1-core.js"></script>
+<script language="javascript" type="text/javascript" src="{$temroot}scripts/mootools-1.2-more.js"></script>
+<script language="javascript" type="text/javascript" src="{$temroot}scripts/slideitmoo-1.1.js"></script>
+<script language="javascript" type="text/javascript">
+	window.addEvents({
+		'domready': function(){
+			/* thumbnails example , div containers */
+			new SlideItMoo({
+						overallContainer: 'SlideItMoo_outer',
+						elementScrolled: 'SlideItMoo_inner',
+						thumbsContainer: 'SlideItMoo_items',		
+						itemsVisible: 5,
+						elemsSlide: 2,
+						duration: 200,
+						itemsSelector: '.SlideItMoo_element',
+						itemWidth: 171,
+						showControls:1});
+		},
+		
+	});
+
+	function clearText(field)
+	{
+		if (field.defaultValue == field.value) field.value = '';
+		else if (field.value == '') field.value = field.defaultValue;
+	}
+</script>
+
+</head>
+
+<body id="home">
+
+{include file='top.html'}
+    
+   
+    
+    <div id="templatemo_main_top"></div>
+    <div id="templatemo_main">
+    	<div id="product_slider">
+    		<div id="SlideItMoo_outer">	
+                <div id="SlideItMoo_inner">			
+                    <div id="SlideItMoo_items">
+                        <div id="SlideItMoo_items">
+                    {section loop=$goodstime name=dao}
+                        <div class="SlideItMoo_element">
+                                <a href="index_do.php?g_id={$goodstime[dao].g_id}" target="_parent">
+                                <img src="{$root}{$goodstime[dao].g_pic}" width="160px" height="120px" alt="{$goodstime[dao].g_name}" /></a>
+                        </div>	
+                    {/section}   
+                    </div>	
+                    </div>			
+                </div>
+            </div>
+            <div class="cleaner"></div>
+        </div>
+        {include file='left.html'}
+         <!-- END of sidebar -->
+        
+        <div id="content">
+        {section loop=$goodsclick name=dao}
+        	<div class="col col_14 product_gallery {if $smarty.section.dao.index_next %3 ==0}no_margin_right{/if}">
+            	<a href="index_do.php?g_id={$goodsclick[dao].g_id}"><img src="{$root}{$goodsclick[dao].g_pic}" alt="{$goodsclick[dao].g_name}" width="200px" height="150px" /></a>
+                <h3>{$goodsclick[dao].g_name}{$smarty.section.dao.index_next}</h3>
+                <p class="product_price">￥{$goodsclick[dao].g_price}.00</p>
+                <a href="ajax.php?do=bus&g_id={$goodsclick[dao].g_id}" class="add_to_cart">加入购物车</a>
+            </div> 
+         {/section}          	
+                  	
+            	
+        </div> <!-- END of content -->
+        <div class="cleaner"></div>
+    </div> <!-- END of main -->
+    {include file='foot.html'}
+     <!-- END of footer -->   
+   
+</div>
+
+</body>
+</html>

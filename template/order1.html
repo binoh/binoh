@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+{$arr.g_name}
+{$arr.g_price}
+<img src="{$root}{$arr.g_pic}" width="160px" height="160px"/>
+<form action="order_do.php" method="post">
+购买数量:<select name="num">
+           <option value="1" selected="selected">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>         
+          </select>
+<input type="hidden" name="g_id" value="{$arr.g_id}" />
+收货地址：<input type="text" name="addall" />
+手机号码：<input type="text" name="tel" />
+收货人：<input type="text" name="addname" />
+客户留言：<textarea name="mess"></textarea>
+
+<input type="submit" name="sub" onclick="return confirm('是否确定购买?');" value="支付" />
+</form>
+<a href="ajax.php?do=bus&g_id={$arr.g_id}">加入购物车</a>
+
+</body>
+</html>

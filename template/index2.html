@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Web Store Theme - Free CSS Templates</title>
+<meta name="keywords" content="web store, free templates, website templates, CSS, HTML" />
+<meta name="description" content="Web Store Theme - free CSS template provided by templatemo.com" />
+<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{$temroot}css/ddsmoothmenu.css" />
+<script type="text/javascript" src="{$temroot}js/jquery.min.js"></script>
+<script type="text/javascript" src="{$temroot}js/ddsmoothmenu.js">
+</script>
+
+<script type="text/javascript">
+
+ddsmoothmenu.init({
+	mainmenuid: "templatemo_menu", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<script language="javascript" type="text/javascript" src="scripts/mootools-1.2.1-core.js"></script>
+<script language="javascript" type="text/javascript" src="scripts/mootools-1.2-more.js"></script>
+<script language="javascript" type="text/javascript" src="scripts/slideitmoo-1.1.js"></script>
+<script language="javascript" type="text/javascript">
+	window.addEvents({
+		'domready': function(){
+			/* thumbnails example , div containers */
+			new SlideItMoo({
+						overallContainer: 'SlideItMoo_outer',
+						elementScrolled: 'SlideItMoo_inner',
+						thumbsContainer: 'SlideItMoo_items',		
+						itemsVisible: 5,
+						elemsSlide: 2,
+						duration: 200,
+						itemsSelector: '.SlideItMoo_element',
+						itemWidth: 171,
+						showControls:1});
+		},
+		
+	});
+
+	function clearText(field)
+	{
+		if (field.defaultValue == field.value) field.value = '';
+		else if (field.value == '') field.value = field.defaultValue;
+	}
+</script>
+</head>
+<body>
+{include file='nav.html'}
+<form action="search.php" method="get">
+搜索:<input name="key" type="text" />
+<input type="submit" name="s_sub" value="提交" />
+</form>
+{*公告*}
+{section loop=$gonggao name=dao}
+<a href="index_do.php?a_id={$gonggao[dao].a_id}">{$gonggao[dao].a_title}</a><br />
+{/section}
+{*导航*}
+<a href="">首页</a>
+{section loop=$goodscat name=dao}
+{if $goodscat[dao].up_id eq 0 and $goodscat[dao].is_dao eq 1}
+<a href="index_do.php?cat_id={$goodscat[dao].cat_id}">{$goodscat[dao].cat_name}</a>
+{section loop=$goodscat name=erdao}
+{if $goodscat[erdao].up_id eq $goodscat[dao].cat_id }
+<a href="index_do.php?cat_id={$goodscat[erdao].cat_id}">{$goodscat[erdao].cat_name}</a>
+{/if}
+{/section}
+{/if}
+{/section}
+
+{section loop=$wencat name=dao}
+{if $wencat[dao].fid eq 0 and $wencat[dao].isshow eq 1}
+<a href="index_do.php?wen_id={$wencat[dao].wen_id}">{$wencat[dao].name}</a>
+{section loop=$wencat name=erdao}
+{if $wencat[erdao].fid eq $wencat[dao].wen_id }
+<a href="index_do.php?wen_id={$wencat[dao].wen_id}">{$wencat[dao].name}</a>
+{/if}
+{/section}
+{/if}
+{/section}
+<br />
+{*左侧商品分类*}
+{section loop=$goodscat name=dao}
+{if $goodscat[dao].up_id eq 0}
+<a href="index_do.php?cat_id={$goodscat[dao].cat_id}">{$goodscat[dao].cat_name}</a><br />
+{/if}
+{/section}
+{*中部商品轮播*}
+{*资讯*}
+{section loop=$zhixun name=dao}
+<a href="index_do.php?a_id={$zhixun[dao].a_id}">{$zhixun[dao].a_title}</a><br />
+{/section}
+{*新品上架，热卖商品，猜你喜欢，特价商品*}
+{section loop=$goodstime name=dao}
+<img src="{$root}{$goodstime[dao].g_pic}" width="160px" height="160px" />
+<a href="index_do.php?g_id={$goodstime[dao].g_id}">{$goodstime[dao].g_name}</a><br />
+{/section}
+{section loop=$goodsclick name=dao}
+<img src="{$root}{$goodsclick[dao].g_pic}" width="160px" height="160px" />
+<a href="index_do.php?g_id={$goodsclick[dao].g_id}">{$goodsclick[dao].g_name}</a><br />
+{/section}
+{section loop=$goodslast name=dao}
+<img src="{$root}{$goodslast[dao].g_pic}" width="160px" height="160px" />
+<a href="index_do.php?g_id={$goodslast[dao].g_id}">{$goodslast[dao].g_name}</a><br />
+{/section}
+{section loop=$goodsprice name=dao}
+<img src="{$root}{$goodsprice[dao].g_pic}" width="160px" height="160px" />
+<a href="index_do.php?g_id={$goodsprice[dao].g_id}">{$goodsprice[dao].g_name}</a><br />
+{/section}
+{*品牌*}
+{section loop=$brand name=dao}
+<img src="{$root}{$brand[dao].logo}" width="80px" height="80px" />
+<a href="{$brand[dao].url}">{$brand[dao].name}</a><br />
+{/section}
+{*中部banner*}
+{*分类商品*}
+</body>
+</html>

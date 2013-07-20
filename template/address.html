@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Web Store Theme - Checkout</title>
+<meta name="keywords" content="web store, checkout, free ecommerce templates, store templates, CSS, HTML" />
+<meta name="description" content="Web Store Theme, Checkout, free CSS template provided by templatemo.com" />
+<link href="{$temroot}css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="{$temroot}css/ddsmoothmenu.css" />
+
+<script type="text/javascript" src="{$temroot}js/jquery.min.js"></script>
+<script type="text/javascript" src="{$temroot}js/ddsmoothmenu.js">
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+</script>
+
+<script type="text/javascript">
+
+ddsmoothmenu.init({
+	mainmenuid: "templatemo_menu", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+
+</head>
+
+<body id="subpage">
+
+<div id="templatemo_wrapper">
+	 <!-- END of header -->
+     {include file='top.html'}
+     <!-- end of templatemo_menu -->
+    <div class="cleaner h20"></div>
+    <div id="templatemo_main_top"></div>
+    <div id="templatemo_main">
+    	
+        {include file='left.html'} <!-- END of sidebar -->
+       <form action="order_do.php" method="post">
+        <div id="content">
+       		<h2>填写支付地址</h2>
+            <h5><strong></strong></h5>
+            <input type="hidden" name="g_id" value="{$arr.g_id}" />
+            <div class="col col_13 checkout">
+				收货地址:<input type="text" name="addall" style="width:300px;" />
+                手机号码:
+                <input type="text" name="tel"  style="width:300px;"  />
+                收货人:
+                <input type="text" name="addname"   style="width:300px;"  />
+                客户留言:
+                <input type="text" name="mess"  style="width:300px;"  />
+            </div>
+            
+            {*<div class="col col_13 checkout">
+            	E-MAIL
+				<input type="text"  style="width:300px;"  />
+                PHONE<br />
+				<span style="font-size:10px">Please, specify your reachable phone number. YOU MAY BE GIVEN A CALL TO VERIFY AND COMPLETE THE ORDER.</span>
+                <input type="text"  style="width:300px;"  />
+            </div>*}
+            
+             <div style="float:left; width: 265px; margin-top: 20px;clear:both;">
+                    
+                        <div class="continueshopping" style="float:right;"><a href="#" class="more">
+                         <input type="submit" name="o_sub" value="保存订单" style="font-weight: bold;color: #21bdd0;border:none;background:none;width:100px;height:30px;" />
+                        </a></div>
+                       
+                        <div class="continueshopping" style="float:left;"><a href="#" class="more">
+                        <input type="submit" name="sub" onclick="return confirm('是否确定购买?');" value="支付" style="font-weight: bold;color: #21bdd0;border:none;background:none;width:100px;height:30px;" />
+                        </a></div>
+                    	
+                    </div>
+          
+		</form>     
+		</div>
+        <div class="cleaner"></div>
+     <!-- END of main -->
+    
+    {include file='foot.html'} <!-- END of footer -->   
+   
+</div>
+
+</body>
+</html>

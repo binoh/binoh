@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$cat_arr.cat_name}-B2C商城</title>
+</head>
+
+<body>
+{section name=name loop=$twoarr}
+{$twoarr[name].cat_id}{$twoarr[name].cat_name}
+{section name=name loop=$arr}
+{if $twoarr[name].cat_id eq $arr[name].cat_id}
+{$arr[name].g_name}
+{/if}
+{/section}
+{/section}
+</body>
+</html>

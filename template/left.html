@@ -1,0 +1,20 @@
+<div id="sidebar">
+        	<h3>商品分类</h3>
+            <ul class="sidebar_menu">
+               {section loop=$goodscat name=dao}
+				{if $goodscat[dao].up_id eq 0}
+			    <li><a href="index_do.php?cat_id={$goodscat[dao].cat_id}">{$goodscat[dao].cat_name}</a></li>
+                {/if}
+				{/section}
+                
+			</ul>
+            <h3>商品搜索</h3>
+            <p>最好的网上超市！</p>
+            <div id="newsletter">
+               <form action="search.php" method="get">
+                  <input type="text" value="输入商品名称" name="key" id="email_newsletter" title="email_newsletter" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                  <input type="submit" name="s_sub" value="搜索" alt="Subscribe" id="subscribebtn" title="Subscribe" class="subscribebtn"  />
+                </form>
+                <div class="cleaner"></div>
+            </div>
+        </div>

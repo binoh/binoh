@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Web Store Theme - FAQs</title>
+<meta name="keywords" content="web store, FAQs, free templates, website templates, CSS, HTML" />
+<meta name="description" content="Web Store Theme, FAQs, free CSS template provided by templatemo.com" />
+<link href="{$temroot}css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="{$temroot}css/ddsmoothmenu.css" />
+
+<script type="text/javascript" src="{$temroot}js/jquery.min.js"></script>
+<script type="text/javascript" src="{$temroot}js/ddsmoothmenu.js">
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+</script>
+
+<script type="text/javascript">
+
+ddsmoothmenu.init({
+	mainmenuid: "templatemo_menu", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+
+</head>
+
+<body id="subpage">
+
+<div id="templatemo_wrapper">
+	{include file='top.html'}
+    
+    <div class="cleaner h20"></div>
+    <div id="templatemo_main_top"></div>
+    <div id="templatemo_main">
+    	{include file='left.html'} <!-- END of sidebar -->
+        
+        <div id="content" class="faq">
+       
+        	<h2>{$arr.a_title}</h2>
+           
+          
+            <div style="overflow:hidden;padding:0px;margin: 0 0 10px 0;">
+            {$arr.con}
+            </div>
+          
+        </div> <!-- END of content -->
+        <div class="cleaner"></div>
+    </div> <!-- END of main -->
+    
+    {include file='foot.html'} <!-- END of footer -->   
+   
+</div>
+
+</body>
+</html>

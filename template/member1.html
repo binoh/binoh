@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+{*收藏的商品*}
+{$co_num}
+{section loop=$co_good name=name}
+{$co_good[name].g_name}
+{$co_good[name].g_price}
+{$co_good[name].g_last}
+<a href="member_do.php?do=quxiao&g_id={$co_good[name].g_id}">取消收藏</a>
+{/section}
+{*已购买的商品*}
+{$order_num}
+{section loop=$arr_order name=name}
+{$arr_order[name].g_name}
+{$arr_order[name].g_price}
+{$arr_order[name].g_last}
+{$arr_order[name].statue}
+{sectionelse}
+暂无数据
+{/section}
+{*购物车*}
+{$bus_num}
+{section loop=$bus_arr name=name}
+{$bus_arr[name].g_name}
+{$bus_arr[name].g_price}
+{$bus_arr[name].g_last}
+<a href="order.php?do=buy&g_id={$bus_arr[name].g_id}">支付</a>
+{/section}
+</body>
+</html>
